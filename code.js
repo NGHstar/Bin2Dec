@@ -8,27 +8,28 @@ submitButton.addEventListener("click", () => {
 
   // check input validation
   if (input.length === 0) {
-    resultText.innerHTML = "please enter a binary number up to 8 digits";
+    resultText.innerHTML = "empty input!";
     return;
   }
 
   // check input validation
   if (input.length > 8) {
-    resultText.innerHTML = "please enter an 8 digits number or less";
+    resultText.innerHTML = "please enter a binary number with up to 8 digits";
     return;
   }
 
   for (let i = 0; i < input.length; i++) {
     const num = Number(input[i]);
     if (num > 1) {
-      resultText.innerHTML = "your number is not binary (0 and 1 only)";
+      resultText.innerHTML =
+        "invalid input! Please enter a binary number (only 0s and 1s)";
       userInput.value = "";
       return;
     }
   }
 
   // convert
-  resultText.innerHTML = convert(input);
+  resultText.innerHTML = "decimal: " + convert(input);
 
   // ---
 });
