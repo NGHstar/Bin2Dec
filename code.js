@@ -4,11 +4,17 @@ const submitButton = document.querySelector(".js-submit-button");
 
 submitButton.addEventListener("click", () => {
   // ---
-  const input = String(userInput.value);
+  const input = userInput.value.trim();
+
+  // check input validation
+  if (input.length === 0) {
+    resultText.innerHTML = "please enter a binary number up to 8 digits";
+    return;
+  }
 
   // check input validation
   if (input.length > 8) {
-    resultText.innerHTML = "please enter 8 number or less";
+    resultText.innerHTML = "please enter an 8 digits number or less";
     return;
   }
 
@@ -27,8 +33,19 @@ submitButton.addEventListener("click", () => {
   // ---
 });
 
-function convert() {
+function convert(input) {
+  let finalNumber = 0;
+  let power = 0;
   // ---
+  for (let i = input.length - 1; i >= 0; i--) {
+    let num = Number(input[i]);
+    finalNumber += num * Math.pow(2, power);
+    power++;
+  }
 
-  return "";
+  return String(finalNumber);
+}
+
+function ezConvert(input) {
+  return String(parseInt(input, 2));
 }
